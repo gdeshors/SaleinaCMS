@@ -146,10 +146,10 @@ export default {
         },
 
         copyUrl(path, index) {
-
-            
-                navigator.clipboard.writeText(path);
-            
+                let t = this.$store.getters.publicFolder + 
+                    path.replace(this.$store.getters.mediaFolder, "");
+                navigator.clipboard.writeText(t);
+                alert('url placed in clipboard : ' + t);
 
         }
     }
