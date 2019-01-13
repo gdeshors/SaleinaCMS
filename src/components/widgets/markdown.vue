@@ -1,7 +1,14 @@
 <template>
     <div class="input">
-        <div class="pell" :id="id" @keydown.ctrl.66.prevent="bold" @keydown.ctrl.73.prevent="italic" @keydown.ctrl.85.prevent="underline" @keydown.ctrl.83.prevent="strikethrough"></div>
         
+         <tabs class="card">
+				<tab name="Wysiwyg" key="bb">
+                     <div class="pell" :id="id" @keydown.ctrl.66.prevent="bold" @keydown.ctrl.73.prevent="italic" @keydown.ctrl.85.prevent="underline" @keydown.ctrl.83.prevent="strikethrough"></div>
+				</tab>
+                <tab name="Raw" key="dd">
+                    <text />
+				</tab>
+        </tabs>
         <label>{{ label }}</label>
 
         <label class="error">{{ error }}</label>
@@ -13,6 +20,7 @@
     import { init } from "pell";
     import Turndown from "turndown"
     import showdown from "showdown";
+    import Text from './text';
 
     let converter = new showdown.Converter({
         tables: true
