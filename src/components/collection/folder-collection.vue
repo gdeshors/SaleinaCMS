@@ -15,7 +15,7 @@
                 :key="file.name"
             >
 
-            {{ file.name.replace(/-/g, " ").replace(/\..*$/, "") }}
+            {{ file.name.replace(/-/g, " ").replace(/\.(\w+)$/, "").replace(/\.(\w+)/g, " ($1) ") }}
 
             </router-link>
 
