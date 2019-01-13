@@ -28,6 +28,7 @@
          -->
         <div class="actions" v-if="typeof this.value === 'string' && !previewOnly">
             <delete-icon @click.native="$emit('remove', repoPath)"/>
+            <collection @click.native="$emit('copyUrl', repoPath)"/>
         </div>
 
     </div>
@@ -36,6 +37,7 @@
 <script>
 
 import DeleteIcon from "../../assets/icons/delete.svg";
+import Collection from "../../assets/icons/collection.svg";
 
 export default {
     name: "media-preview",
@@ -54,7 +56,8 @@ export default {
         }
     },
     components: {
-        DeleteIcon
+        DeleteIcon,
+        Collection
     },
     data() {
         return {
