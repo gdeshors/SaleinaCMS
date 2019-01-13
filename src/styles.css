@@ -45,6 +45,11 @@
     box-shadow: none;
 }
 
+hr {
+    border: solid;
+    border-width: 1px;
+}
+
 body,
 html {
     height: 100%;
