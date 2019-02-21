@@ -84,7 +84,6 @@
 		},
 		created() {
 
-
 			// if fields is undefined treat the list widget
 			// as a string input that accepts comma separated values
 			if (this.fields === undefined || this.fields === null) return this.items = this.value.join(", ") || "";
@@ -157,7 +156,7 @@
 
 				// if fields is undefined split the value using the comma delimiter
 				// and emit the resulting array as value
-				if (this.fields === undefined) return this.$emit("input", this.items.split(","));
+				if (this.fields === undefined) return this.$emit("input", this.items.split(",").map(item => item.trim()));
 
 				if (this.fields.length === 1) {
 
