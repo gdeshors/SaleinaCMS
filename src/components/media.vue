@@ -15,7 +15,7 @@
             <div id="media-files">
                 <loading v-if="loading"/>
                 <template v-else>
-                    <media-preview :picker="picker" @input="$emit('input', $event)" @remove="remove($event, index)" v-for="(media, index) in $store.state.backend.media.files" :value="media.name || media" :key="media.name || Math.random()"/>
+                    <media-preview :picker="picker" @input="$emit('input', $event)" @remove="remove($event, index)" @copyUrl="copyUrl($event, index)" v-for="(media, index) in $store.state.backend.media.files" :value="media.name || media" :key="media.name || Math.random()"/>
                 </template>
             </div>
 
@@ -142,6 +142,14 @@ export default {
             this.$store.dispatch("deleteFile", {
                 path: path
             });
+
+        },
+
+        copyUrl(path, index) {
+                let t = this.$store.getters.publicFolder + 
+                    path.replace(this.$store.getters.mediaFolder, "");
+                navigator.clipboard.writeText(t);
+                alert('url placed in clipboard : ' + t);
 
         }
     }
