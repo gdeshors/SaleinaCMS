@@ -74,14 +74,21 @@
 					replace: "_"
 				});
 
+				// add leading zeros
+				Number.prototype.pad = function(size) {
+					var s = String(this);
+					while (s.length < (size || 2)) {s = "0" + s;}
+					return s;
+				}
+
 				let fileNameParams = {
 					slug: slug,
 					year: now.getFullYear(),
-					month: now.getMonth() + 1,
-					hours: now.getHours(),
-					minutes: now.getMinutes(),
-					seconds: now.getSeconds(),
-					date: now.getDate()
+					month: (now.getMonth() + 1).pad(2),
+					hours: (now.getHours()).pad(2),
+					minutes: (now.getMinutes()).pad(2),
+					seconds: (now.getSeconds()).pad(2),
+					date: (now.getDate()).pad(2)
 				};
 
 				let slugTemplate = this.collection.slug || "{{slug}}";
